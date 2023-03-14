@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/5a608c6ca1.css" crossorigin="anonymous"> -->
+    <script src="https://kit.fontawesome.com/5a608c6ca1.js" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #num {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 255, 0.445);
+
+        }
+
+        nav>div {
+            margin: 10px 25px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .inv {
+            display: none;
+            visibility: hidden;
+        }
+
+        .vis {
+            /* display: ; */
+            visibility: visible;
+
+        }
+
+        #mag {
+            cursor: pointer;
+        }
+
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <nav id="num">
+        <div><a href="">Login</a></div>
+        <div><input id="search" type="text" placeholder="Search for location"></div>
+        <div class="star">
+            <i id="mag" class="fa-solid fa-magnifying-glass"></i>
+
+
+        </div>
+        <div>
+            <i class="fa-solid fa-location-dot"></i>
+
+        </div>
+    </nav>
+
+
+    <section>
+         
+    </section>
+
+
+
+    <script>
+
+        let search = document.getElementById("search")
+        search.classList.add("inv")
+        let mag = document.getElementById("mag")
+        mag.addEventListener("click", () => {
+            search.classList.remove("inv")
+        })
+
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
