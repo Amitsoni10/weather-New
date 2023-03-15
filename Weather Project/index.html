@@ -16,7 +16,7 @@
             padding: 0;
         }
 
-        #num {
+        #navbar {
             display: flex;
             flex-direction: row-reverse;
         }
@@ -30,9 +30,9 @@
             margin: 10px 25px;
         }
 
-        a {
+        /* a {
             text-decoration: none;
-        }
+        } */
 
         .inv {
             display: none;
@@ -45,11 +45,10 @@
 
         }
 
-        #mag {
+        #mag,
+        #login {
             cursor: pointer;
         }
-
-
     </style>
 
 
@@ -58,8 +57,8 @@
 
 <body>
 
-    <nav id="num">
-        <div><a href="">Login</a></div>
+    <nav id="navbar">
+        <div id="login">Login</div>
         <div><input id="search" type="text" placeholder="Search for location"></div>
         <div class="star">
             <i id="mag" class="fa-solid fa-magnifying-glass"></i>
@@ -73,22 +72,42 @@
     </nav>
 
 
-    <section>
-         
+    <section id="loginpage">
+
+        <div class="container">
+            <h2>Login</h2>
+            <label for="">User ID</label><br>
+            <input id="user" type="text"><br><br>
+            <label for="">Password</label><br>
+            <input id="password" type="password"><br><br>
+
+
+            <button id="lbtn">Login</button>
+            <button id="signuphere">New User Signup</button>
+            <p id="content"></p>
+        </div>
+
+    </section>
+
+
+    <section id="signuppage">
+        <div class="container">
+            <h2>Signup</h2>
+            <label for="">User ID</label><br>
+            <input id="usersignup" type="text"><br><br>
+            <label for="">Password</label><br>
+            <input id="passwordsignup" type="password"><br><br>
+
+
+            <button id="lbtnsignup">Signup</button>
+            <!-- <p id="content"></p> -->
+        </div>
+
     </section>
 
 
 
-    <script>
 
-        let search = document.getElementById("search")
-        search.classList.add("inv")
-        let mag = document.getElementById("mag")
-        mag.addEventListener("click", () => {
-            search.classList.remove("inv")
-        })
-
-    </script>
     <script src="script.js"></script>
 
 </body>
