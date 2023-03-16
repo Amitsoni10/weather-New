@@ -223,6 +223,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
             console.log(data1)
 
+            document.getElementById("day").innerHTML = "Today"
+            document.getElementById("day1").innerHTML = "Today"
+            document.getElementById("day2").innerHTML = "Today"
+
             temp3.innerHTML = `${Math.floor(data1.list[8].main.temp)} &#8451`
             weathercondition3.innerHTML = data1.list[8].weather[0].description
 
@@ -313,11 +317,31 @@ window.addEventListener("DOMContentLoaded", () => {
             } else if ((data1.list[38].weather[0].id >= 500 && data1.list[38].weather[0].id <= 531) || (data1.list[38].weather[0].id >= 300 && data1.list[38].weather[0].id <= 321)) {
                 icon7.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
             }
-            document.getElementById("day3").innerHTML = data1.list[8].dt_txt
-            document.getElementById("day4").innerHTML = data1.list[16].dt_txt
-            document.getElementById("day5").innerHTML = data1.list[21].dt_txt
-            document.getElementById("day6").innerHTML = data1.list[30].dt_txt
-            document.getElementById("day7").innerHTML = data1.list[38].dt_txt
+
+            let time3 = new Date(data1.list[8].dt*1000)
+            let day3 = time3.toDateString().split(" ")[0]
+
+            let time4 = new Date(data1.list[16].dt*1000)
+            let day4 = time4.toDateString().split(" ")[0]
+
+            let time5 = new Date(data1.list[21].dt*1000)
+            let day5 = time5.toDateString().split(" ")[0]
+
+            let time6 = new Date(data1.list[30].dt*1000)
+            let day6 = time6.toDateString().split(" ")[0]
+
+            let time7 = new Date(data1.list[38].dt*1000)
+            let day7 = time7.toDateString().split(" ")[0]
+
+
+
+            document.getElementById("day3").innerHTML = day3
+            document.getElementById("day4").innerHTML = day4
+            document.getElementById("day5").innerHTML = day5
+            document.getElementById("day6").innerHTML = day6
+            document.getElementById("day7").innerHTML = day7
+
+
 
             search.value = ""
 
