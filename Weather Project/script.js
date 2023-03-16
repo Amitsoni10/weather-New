@@ -88,13 +88,13 @@ window.addEventListener("DOMContentLoaded", () => {
         }
         else{
   
-            // console.log(data)
-            temp.innerHTML = `${Math.floor(data.main.temp)} &#8451`
+            console.log(data)
+            temp.innerHTML = `${Math.floor(data.main.temp)}&#8451`
             weathercondition.innerHTML = data.weather[0].description
             city.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.name}`
             country.innerHTML = data.sys.country
-            feels_like.innerHTML = `${Math.floor(data.main.feels_like)} &#8451`
-            humidity.innerHTML = `${data.main.humidity}%`
+            feels_like.innerHTML = `Feels Like - ${Math.floor(data.main.feels_like)}&#8451`
+            humidity.innerHTML = `Humidity - ${data.main.humidity}%`
 
             if(data.weather[0].id == 800){
                 icon.innerHTML = `<i class="fa-solid fa-sun"></i>`;

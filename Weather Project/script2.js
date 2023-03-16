@@ -37,8 +37,29 @@ window.addEventListener("DOMContentLoaded", () => {
     let infoText2 = document.getElementById("infoText2")
     let icon2 = document.getElementById("img2")
 
+    let temp3 = document.getElementById("temp3")
+    let weathercondition3 = document.getElementById("weathercondition3")
+    let icon3 = document.getElementById("img3")
+
+    let temp4 = document.getElementById("temp4")
+    let weathercondition4 = document.getElementById("weathercondition4")
+    let icon4 = document.getElementById("img4")
+
+    let temp5 = document.getElementById("temp5")
+    let weathercondition5 = document.getElementById("weathercondition5")
+    let icon5 = document.getElementById("img5")
+
+    let temp6 = document.getElementById("temp6")
+    let weathercondition6 = document.getElementById("weathercondition6")
+    let icon6 = document.getElementById("img6")
+
+    let temp7 = document.getElementById("temp7")
+    let weathercondition7 = document.getElementById("weathercondition7")
+    let icon7 = document.getElementById("img7")
+
 
     let api;
+    let api1;
 
 
 
@@ -55,24 +76,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
     let currentloc = document.getElementById("currentloc")
-    currentloc.addEventListener("click",()=>{
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(success,error)
+    currentloc.addEventListener("click", () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error)
         }
-        else{
+        else {
             alert("Your System Does Not Support Geolocation API")
         }
     })
 
-    function success(position){
+    function success(position) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
         api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=23f88dd19a408b48dc54ac3d48402709`
+
+
+        api1 = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=23f88dd19a408b48dc54ac3d48402709`
         fetchApi()
+        fetchData()
     }
 
-    function error(error){
+    function error(error) {
         infoText.innerHTML = error.message
         infoText1.innerHTML = error.message
         infoText2.innerHTML = error.message
@@ -81,8 +106,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-    search.addEventListener("keyup",e=>{
-        if(e.key == "Enter" && search.value !== ""){
+    search.addEventListener("keyup", e => {
+        if (e.key == "Enter" && search.value !== "") {
             requestApi(search.value)
         }
     })
@@ -90,17 +115,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
     function requestApi(city) {
         api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=23f88dd19a408b48dc54ac3d48402709`;
-        fetchApi() 
-         
+
+        api1 = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=23f88dd19a408b48dc54ac3d48402709`
+        fetchApi()
+        fetchData()
+
     }
 
 
-    function fetchApi(){
+    function fetchApi() {
         infoText.innerHTML = "Getting Details"
         infoText1.innerHTML = "Getting Details"
         infoText2.innerHTML = "Getting Details"
 
-        fetch(api).then(response=>response.json()).then(data => weatherData(data)).catch(()=>{
+        fetch(api).then(response => response.json()).then(data => weatherData(data)).catch(() => {
             infoText.innerHTML = "Some Error Occured";
             infoText1.innerHTML = "Some Error Occured";
             infoText2.innerHTML = "Some Error Occured";
@@ -108,78 +136,193 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    function weatherData(data){
-        if(data.cod == "404"){
-            console.log("reached")
+    function weatherData(data) {
+        if (data.cod == "404") {
+
             infoText.innerHTML = `Can't find the data for ${search.value}. Please provide a valid city name`
             infoText1.innerHTML = `Can't find the data for ${search.value}. Please provide a valid city name`
             infoText2.innerHTML = `Can't find the data for ${search.value}. Please provide a valid city name`
         }
-        else{
-   
+        else {
+
             // console.log(data)
 
-            temp.innerHTML = `${Math.floor(data.main.temp +273.15)} K`
+            temp.innerHTML = `${Math.floor(data.main.temp + 273.15)} K`
             weathercondition.innerHTML = data.weather[0].description
             city.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.name}`
             country.innerHTML = data.sys.country
-            feels_like.innerHTML = `${Math.floor(data.main.feels_like + 273.15)} K`
-            humidity.innerHTML = `${data.main.humidity}%`
+            feels_like.innerHTML = `Feels Like - ${Math.floor(data.main.feels_like + 273.15)} K`
+            humidity.innerHTML = `Humidity - ${data.main.humidity}%`
 
             temp1.innerHTML = `${Math.floor(data.main.temp)} &#8451`
             weathercondition1.innerHTML = data.weather[0].description
             city1.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.name}`
             country1.innerHTML = data.sys.country
-            feels_like1.innerHTML = `${Math.floor(data.main.feels_like)} &#8451`
-            humidity1.innerHTML = `${data.main.humidity}%`
+            feels_like1.innerHTML = `Feels Like - ${Math.floor(data.main.feels_like)} &#8451`
+            humidity1.innerHTML = `Humidity - ${data.main.humidity}%`
 
-            temp2.innerHTML = `${Math.floor((data.main.temp *(9/5))+32)} &#8457`
+            temp2.innerHTML = `${Math.floor((data.main.temp * (9 / 5)) + 32)} &#8457`
             weathercondition2.innerHTML = data.weather[0].description
             city2.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.name}`
             country2.innerHTML = data.sys.country
-            feels_like2.innerHTML = `${Math.floor((data.main.feels_like * (9/5))+32)} &#8457`
-            humidity2.innerHTML = `${data.main.humidity}%`
+            feels_like2.innerHTML = `Feels Like - ${Math.floor((data.main.feels_like * (9 / 5)) + 32)} &#8457`
+            humidity2.innerHTML = `Humidity - ${data.main.humidity}%`
 
 
-            if(data.weather[0].id == 800){
+            if (data.weather[0].id == 800) {
                 icon.innerHTML = `<i class="fa-solid fa-sun"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-sun"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-            }else if(data.weather[0].id >= 200 && data.weather[0].id <= 232){
-                icon.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;  
-                icon1.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;  
-                icon2.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;  
-            }else if(data.weather[0].id >= 600 && data.weather[0].id <= 622){
+            } else if (data.weather[0].id >= 200 && data.weather[0].id <= 232) {
+                icon.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+                icon1.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+                icon2.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data.weather[0].id >= 600 && data.weather[0].id <= 622) {
                 icon.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
-            }else if(data.weather[0].id >= 701 && data.weather[0].id <= 781){
+            } else if (data.weather[0].id >= 701 && data.weather[0].id <= 781) {
                 icon.innerHTML = `<i class="fa-solid fa-smog"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-smog"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-smog"></i>`;
-            }else if(data.weather[0].id >= 801 && data.weather[0].id <= 804){
+            } else if (data.weather[0].id >= 801 && data.weather[0].id <= 804) {
                 icon.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
-            }else if((data.weather[0].id >= 500 && data.weather[0].id <= 531) || (data.weather[0].id >= 300 && data.weather[0].id <= 321)){
+            } else if ((data.weather[0].id >= 500 && data.weather[0].id <= 531) || (data.weather[0].id >= 300 && data.weather[0].id <= 321)) {
                 icon.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
             }
 
-            search.value =""
+            search.value = ""
             infoText.innerHTML = ""
             infoText1.innerHTML = ""
             infoText2.innerHTML = ""
 
 
-            
+
         }
     }
 
 
+    function fetchData() {
+        fetch(api1).then(response => response.json()).then(data1 => weatherData1(data1)).catch(() => {
+            console.log("Error occured")
+
+        });
+    }
 
 
+
+    function weatherData1(data1) {
+        if (data1.cod == "404") {
+            console.log(" please provide a valid city name")
+        }
+        else {
+
+            console.log(data1)
+
+            temp3.innerHTML = `${Math.floor(data1.list[8].main.temp)} &#8451`
+            weathercondition3.innerHTML = data1.list[8].weather[0].description
+
+            temp4.innerHTML = `${Math.floor(data1.list[16].main.temp)} &#8451`
+            weathercondition4.innerHTML = data1.list[16].weather[0].description
+
+            temp5.innerHTML = `${Math.floor(data1.list[21].main.temp)} &#8451`
+            weathercondition5.innerHTML = data1.list[21].weather[0].description
+
+            temp6.innerHTML = `${Math.floor(data1.list[30].main.temp)} &#8451`
+            weathercondition6.innerHTML = data1.list[30].weather[0].description
+
+            temp7.innerHTML = `${Math.floor(data1.list[38].main.temp)} &#8451`
+            weathercondition7.innerHTML = data1.list[38].weather[0].description
+
+
+
+            if (data1.list[8].weather[0].id == 800) {
+                icon3.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[8].weather[0].id >= 200 && data1.list[8].weather[0].id <= 232) {
+                icon3.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[8].weather[0].id >= 600 && data1.list[8].weather[0].id <= 622) {
+                icon3.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[8].weather[0].id >= 701 && data1.list[8].weather[0].id <= 781) {
+                icon3.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[8].weather[0].id >= 801 && data1.list[8].weather[0].id <= 804) {
+                icon3.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[8].weather[0].id >= 500 && data1.list[8].weather[0].id <= 531) || (data1.list[8].weather[0].id >= 300 && data1.list[8].weather[0].id <= 321)) {
+                icon3.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+
+            if (data1.list[16].weather[0].id == 800) {
+                icon4.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[16].weather[0].id >= 200 && data1.list[16].weather[0].id <= 232) {
+                icon4.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[16].weather[0].id >= 600 && data1.list[16].weather[0].id <= 622) {
+                icon4.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[16].weather[0].id >= 701 && data1.list[16].weather[0].id <= 781) {
+                icon4.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[16].weather[0].id >= 801 && data1.list[16].weather[0].id <= 804) {
+                icon4.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[16].weather[0].id >= 500 && data1.list[16].weather[0].id <= 531) || (data1.list[16].weather[0].id >= 300 && data1.list[16].weather[0].id <= 321)) {
+                icon4.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+
+            if (data1.list[21].weather[0].id == 800) {
+                icon5.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[21].weather[0].id >= 200 && data1.list[21].weather[0].id <= 232) {
+                icon5.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[21].weather[0].id >= 600 && data1.list[21].weather[0].id <= 622) {
+                icon5.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[21].weather[0].id >= 701 && data1.list[21].weather[0].id <= 781) {
+                icon5.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[21].weather[0].id >= 801 && data1.list[21].weather[0].id <= 804) {
+                icon5.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[21].weather[0].id >= 500 && data1.list[21].weather[0].id <= 531) || (data1.list[21].weather[0].id >= 300 && data1.list[21].weather[0].id <= 321)) {
+                icon5.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+
+            if (data1.list[30].weather[0].id == 800) {
+                icon6.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[30].weather[0].id >= 200 && data1.list[30].weather[0].id <= 232) {
+                icon6.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[30].weather[0].id >= 600 && data1.list[30].weather[0].id <= 622) {
+                icon6.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[30].weather[0].id >= 701 && data1.list[30].weather[0].id <= 781) {
+                icon6.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[30].weather[0].id >= 801 && data1.list[30].weather[0].id <= 804) {
+                icon6.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[30].weather[0].id >= 500 && data1.list[30].weather[0].id <= 531) || (data1.list[30].weather[0].id >= 300 && data1.list[30].weather[0].id <= 321)) {
+                icon6.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+
+            if (data1.list[38].weather[0].id == 800) {
+                icon7.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[38].weather[0].id >= 200 && data1.list[38].weather[0].id <= 232) {
+                icon7.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[38].weather[0].id >= 600 && data1.list[38].weather[0].id <= 622) {
+                icon7.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[38].weather[0].id >= 701 && data1.list[38].weather[0].id <= 781) {
+                icon7.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[38].weather[0].id >= 801 && data1.list[38].weather[0].id <= 804) {
+                icon7.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[38].weather[0].id >= 500 && data1.list[38].weather[0].id <= 531) || (data1.list[38].weather[0].id >= 300 && data1.list[38].weather[0].id <= 321)) {
+                icon7.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+            document.getElementById("day3").innerHTML = data1.list[8].dt_txt
+            document.getElementById("day4").innerHTML = data1.list[16].dt_txt
+            document.getElementById("day5").innerHTML = data1.list[21].dt_txt
+            document.getElementById("day6").innerHTML = data1.list[30].dt_txt
+            document.getElementById("day7").innerHTML = data1.list[38].dt_txt
+
+            search.value = ""
+
+        }
+    }
 
 
 
