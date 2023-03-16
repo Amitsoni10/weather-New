@@ -5,91 +5,152 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
+
+    <script src="https://kit.fontawesome.com/5a608c6ca1.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+
+            /* border: 1px solid black; */
+            border-radius: 25px;
+            width: 350px;
+            height: 400px;
+            align-items: center;
+            text-align: center;
+            margin: 80px auto;
+            padding: 15px;
+            background: linear-gradient(rgb(179, 165, 235), rgb(133, 211, 250));
+
+        }
+
+        #navbar {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 255, 0.445);
+
+        }
+
+        nav>div {
+            margin: 10px 25px;
+        }
+
+        /* a {
+            text-decoration: none;
+        } */
+
+        .inv {
+            display: none;
+            visibility: hidden;
+        }
+
+        .vis {
+            /* display: ; */
+            visibility: visible;
+
+        }
+
+        #mag,
+        #logout,
+        #currentloc {
+            cursor: pointer;
+        }
+
+        #all{
+            display: flex;
+        }
+
+
+
+
+
+    </style>
+
+
+
 </head>
 
 <body>
 
-    <!DOCTYPE html>
-    <html lang="en">
+    <nav id="navbar">
+        <div id="logout">Logout</div>
+        <div><input id="search" type="text" placeholder="Search for location"></div>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Weather App</title>
-        <!-- <link rel="stylesheet" href="https://kit.fontawesome.com/5a608c6ca1.css" crossorigin="anonymous"> -->
-        <script src="https://kit.fontawesome.com/5a608c6ca1.js" crossorigin="anonymous"></script>
+        <div class="star">
+            <i id="mag" class="fa-solid fa-magnifying-glass"></i>
+        </div>
 
-        <style>
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
+        <div>
+            <i id="currentloc" class="fa-solid fa-location-dot"></i>   
+        </div>
 
-            #navbar {
-                display: flex;
-                flex-direction: row-reverse;
-            }
-
-            nav {
-                background-color: rgba(0, 0, 255, 0.445);
-
-            }
-
-            nav>div {
-                margin: 10px 25px;
-            }
-
-            /* a {
-            text-decoration: none;
-        } */
-
-            .inv {
-                display: none;
-                visibility: hidden;
-            }
-
-            .vis {
-                /* display: ; */
-                visibility: visible;
-
-            }
-
-            #mag,
-            #logout {
-                cursor: pointer;
-            }
-        </style>
+    </nav>
 
 
+    <div id="all">
 
-    </head>
+        <div class="container">
 
-    <body>
+            <section id="weatherDetails">
 
-        <nav id="navbar">
-            <div id="logout">Logout</div>
-            <div><input id="search" type="text" placeholder="Search for location"></div>
-            <div class="star">
-                <i id="mag" class="fa-solid fa-magnifying-glass"></i>
+                <div id="infoText"></div>
+                <div id="img"></div>
+                <div id="temp"></div>
+                <div id="weathercondition"></div>
+                <div id="city"></div>
+                <div id="country"></div>
+                <div id="feels_like"></div>
+                <div id="humidity"></div>
 
+            </section>
+        </div>
+        <div class="container">
 
-            </div>
-            <div>
-                <i class="fa-solid fa-location-dot"></i>
+            <section id="weatherDetails1">
 
-            </div>
-        </nav>
+                <div id="infoText1"></div>
+                <div id="img1"></div>
+                <div id="temp1"></div>
+                <div id="weathercondition1"></div>
+                <div id="city1"></div>
+                <div id="country1"></div>
+                <div id="feels_like1"></div>
+                <div id="humidity1"></div>
+
+            </section>
+        </div>
+        <div class="container">
+
+            <section id="weatherDetails2">
+
+                <div id="infoText2"></div>
+                <div id="img2"></div>
+                <div id="temp2"></div>
+                <div id="weathercondition2"></div>
+                <div id="city2"></div>
+                <div id="country2"></div>
+                <div id="feels_like2"></div>
+                <div id="humidity2"></div>
+
+            </section>
+        </div>
+    </div>
 
 
 
-        <script src="script2.js"></script>
-
-    </body>
-
-    </html>
+    <script src="script2.js"></script>
 
 </body>
 

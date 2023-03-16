@@ -10,10 +10,25 @@
     <script src="https://kit.fontawesome.com/5a608c6ca1.js" crossorigin="anonymous"></script>
 
     <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container{
+            
+            border: 1px solid black;
+            border-radius: 25px;
+            width: 350px;
+            height: 400px;
+            align-items: center;
+            text-align: center;
+            margin: 80px auto;
+            padding: 15px;
+            background: linear-gradient(rgb(179, 165, 235), rgb(133, 211, 250));
         }
 
         #navbar {
@@ -30,9 +45,6 @@
             margin: 10px 25px;
         }
 
-        /* a {
-            text-decoration: none;
-        } */
 
         .inv {
             display: none;
@@ -46,14 +58,15 @@
         }
 
         #mag,
-        #login {
+        #login,#currentloc {
             cursor: pointer;
         }
+
+
     </style>
 
-
-
 </head>
+
 
 <body>
 
@@ -62,18 +75,31 @@
         <div><input id="search" type="text" placeholder="Search for location"></div>
         <div class="star">
             <i id="mag" class="fa-solid fa-magnifying-glass"></i>
-
-
         </div>
         <div>
-            <i class="fa-solid fa-location-dot"></i>
+            <i id="currentloc" class="fa-solid fa-location-dot"></i>
 
         </div>
     </nav>
 
 
 
-
+    <div class="container">
+        
+        <section id="weatherDetails">
+            
+            <div id="infoText"></div>
+            <div id="img">  </div>
+            <div id="temp"></div>
+            <div id="weathercondition"></div>
+            <div id="city"></div>
+            <div id="country"></div>
+            <div id="feels_like"></div>
+            <div id="humidity"></div>
+              
+        </section>
+        
+    </div>
 
 
 
