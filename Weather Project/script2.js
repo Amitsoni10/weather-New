@@ -58,6 +58,27 @@ window.addEventListener("DOMContentLoaded", () => {
     let icon7 = document.getElementById("img7")
 
 
+    let tempt1 = document.getElementById("tempt1")
+    let weatherconditiont1 = document.getElementById("weatherconditiont1")
+    let icont1 = document.getElementById("imgt1")
+
+    let tempt2 = document.getElementById("tempt2")
+    let weatherconditiont2 = document.getElementById("weatherconditiont2")
+    let icont2 = document.getElementById("imgt2")
+
+    let tempt3 = document.getElementById("tempt3")
+    let weatherconditiont3 = document.getElementById("weatherconditiont3")
+    let icont3 = document.getElementById("imgt3")
+
+    let tempt4 = document.getElementById("tempt4")
+    let weatherconditiont4 = document.getElementById("weatherconditiont4")
+    let icont4 = document.getElementById("imgt4")
+
+    let tempt5 = document.getElementById("tempt5")
+    let weatherconditiont5 = document.getElementById("weatherconditiont5")
+    let icont5 = document.getElementById("imgt5")
+
+
     let api;
     let api1;
 
@@ -146,27 +167,30 @@ window.addEventListener("DOMContentLoaded", () => {
         else {
 
             // console.log(data)
+            document.getElementById("day").innerHTML = "Today"
+            document.getElementById("day1").innerHTML = "Today"
+            document.getElementById("day2").innerHTML = "Today"
 
             temp.innerHTML = `${Math.floor(data.main.temp + 273.15)} K`
             weathercondition.innerHTML = data.weather[0].description
             city.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.name}`
             country.innerHTML = data.sys.country
-            feels_like.innerHTML = `Feels Like - ${Math.floor(data.main.feels_like + 273.15)} K`
-            humidity.innerHTML = `Humidity - ${data.main.humidity}%`
+            feels_like.innerHTML = `Feels Like : ${Math.floor(data.main.feels_like + 273.15)} K`
+            humidity.innerHTML = `Humidity : ${data.main.humidity}%`
 
             temp1.innerHTML = `${Math.floor(data.main.temp)} &#8451`
             weathercondition1.innerHTML = data.weather[0].description
             city1.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.name}`
             country1.innerHTML = data.sys.country
-            feels_like1.innerHTML = `Feels Like - ${Math.floor(data.main.feels_like)} &#8451`
-            humidity1.innerHTML = `Humidity - ${data.main.humidity}%`
+            feels_like1.innerHTML = `Feels Like : ${Math.floor(data.main.feels_like)} &#8451`
+            humidity1.innerHTML = `Humidity : ${data.main.humidity}%`
 
             temp2.innerHTML = `${Math.floor((data.main.temp * (9 / 5)) + 32)} &#8457`
             weathercondition2.innerHTML = data.weather[0].description
             city2.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.name}`
             country2.innerHTML = data.sys.country
-            feels_like2.innerHTML = `Feels Like - ${Math.floor((data.main.feels_like * (9 / 5)) + 32)} &#8457`
-            humidity2.innerHTML = `Humidity - ${data.main.humidity}%`
+            feels_like2.innerHTML = `Feels Like : ${Math.floor((data.main.feels_like * (9 / 5)) + 32)} &#8457`
+            humidity2.innerHTML = `Humidity : ${data.main.humidity}%`
 
 
             if (data.weather[0].id == 800) {
@@ -223,10 +247,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
             console.log(data1)
 
-            document.getElementById("day").innerHTML = "Today"
-            document.getElementById("day1").innerHTML = "Today"
-            document.getElementById("day2").innerHTML = "Today"
 
+            // daily forcast
             temp3.innerHTML = `${Math.floor(data1.list[8].main.temp)} &#8451`
             weathercondition3.innerHTML = data1.list[8].weather[0].description
 
@@ -241,6 +263,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
             temp7.innerHTML = `${Math.floor(data1.list[38].main.temp)} &#8451`
             weathercondition7.innerHTML = data1.list[38].weather[0].description
+
 
 
 
@@ -334,7 +357,6 @@ window.addEventListener("DOMContentLoaded", () => {
             let day7 = time7.toDateString().split(" ")[0]
 
 
-
             document.getElementById("day3").innerHTML = day3
             document.getElementById("day4").innerHTML = day4
             document.getElementById("day5").innerHTML = day5
@@ -342,6 +364,117 @@ window.addEventListener("DOMContentLoaded", () => {
             document.getElementById("day7").innerHTML = day7
 
 
+
+            // hourly Data
+            
+            tempt1.innerHTML = `${Math.floor(data1.list[0].main.temp)} &#8451`
+            weatherconditiont1.innerHTML = data1.list[0].weather[0].description
+
+            tempt2.innerHTML = `${Math.floor(data1.list[1].main.temp)} &#8451`
+            weatherconditiont2.innerHTML = data1.list[1].weather[0].description
+
+            tempt3.innerHTML = `${Math.floor(data1.list[2].main.temp)} &#8451`
+            weatherconditiont3.innerHTML = data1.list[2].weather[0].description
+
+            tempt4.innerHTML = `${Math.floor(data1.list[3].main.temp)} &#8451`
+            weatherconditiont4.innerHTML = data1.list[3].weather[0].description
+
+            tempt5.innerHTML = `${Math.floor(data1.list[4].main.temp)} &#8451`
+            weatherconditiont5.innerHTML = data1.list[4].weather[0].description
+
+
+
+            if (data1.list[0].weather[0].id == 800) {
+                icont1.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[0].weather[0].id >= 200 && data1.list[0].weather[0].id <= 232) {
+                icont1.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[0].weather[0].id >= 600 && data1.list[0].weather[0].id <= 622) {
+                icont1.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[0].weather[0].id >= 701 && data1.list[0].weather[0].id <= 781) {
+                icont1.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[0].weather[0].id >= 801 && data1.list[0].weather[0].id <= 804) {
+                icont1.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[0].weather[0].id >= 500 && data1.list[0].weather[0].id <= 531) || (data1.list[0].weather[0].id >= 300 && data1.list[0].weather[0].id <= 321)) {
+                icont1.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+            if (data1.list[1].weather[0].id == 800) {
+                icont2.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[1].weather[0].id >= 200 && data1.list[1].weather[0].id <= 232) {
+                icont2.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[1].weather[0].id >= 600 && data1.list[1].weather[0].id <= 622) {
+                icont2.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[1].weather[0].id >= 701 && data1.list[1].weather[0].id <= 781) {
+                icont2.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[1].weather[0].id >= 801 && data1.list[1].weather[0].id <= 804) {
+                icont2.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[1].weather[0].id >= 500 && data1.list[1].weather[0].id <= 531) || (data1.list[1].weather[0].id >= 300 && data1.list[1].weather[0].id <= 321)) {
+                icont2.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+            if (data1.list[2].weather[0].id == 800) {
+                icont3.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[2].weather[0].id >= 200 && data1.list[2].weather[0].id <= 232) {
+                icont3.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[2].weather[0].id >= 600 && data1.list[2].weather[0].id <= 622) {
+                icont3.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[2].weather[0].id >= 701 && data1.list[2].weather[0].id <= 781) {
+                icont3.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[2].weather[0].id >= 801 && data1.list[2].weather[0].id <= 804) {
+                icont3.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[2].weather[0].id >= 500 && data1.list[2].weather[0].id <= 531) || (data1.list[2].weather[0].id >= 300 && data1.list[2].weather[0].id <= 321)) {
+                icont3.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+            if (data1.list[3].weather[0].id == 800) {
+                icont4.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[3].weather[0].id >= 200 && data1.list[3].weather[0].id <= 232) {
+                icont4.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[3].weather[0].id >= 600 && data1.list[3].weather[0].id <= 622) {
+                icont4.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[3].weather[0].id >= 701 && data1.list[3].weather[0].id <= 781) {
+                icont4.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[3].weather[0].id >= 801 && data1.list[3].weather[0].id <= 804) {
+                icont4.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[3].weather[0].id >= 500 && data1.list[3].weather[0].id <= 531) || (data1.list[3].weather[0].id >= 300 && data1.list[3].weather[0].id <= 321)) {
+                icont4.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+            if (data1.list[4].weather[0].id == 800) {
+                icont5.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+            } else if (data1.list[4].weather[0].id >= 200 && data1.list[4].weather[0].id <= 232) {
+                icont5.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+            } else if (data1.list[4].weather[0].id >= 600 && data1.list[4].weather[0].id <= 622) {
+                icont5.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+            } else if (data1.list[4].weather[0].id >= 701 && data1.list[4].weather[0].id <= 781) {
+                icont5.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+            } else if (data1.list[4].weather[0].id >= 801 && data1.list[4].weather[0].id <= 804) {
+                icont5.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+            } else if ((data1.list[4].weather[0].id >= 500 && data1.list[4].weather[0].id <= 531) || (data1.list[4].weather[0].id >= 300 && data1.list[4].weather[0].id <= 321)) {
+                icont5.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+            }
+
+
+            let hour1 = data1.list[0].dt_txt
+            let hourt1 = hour1.toString().split(" ")[1]
+
+            let hour2 = data1.list[1].dt_txt
+            let hourt2 = hour2.toString().split(" ")[1]
+
+            let hour3 = data1.list[2].dt_txt
+            let hourt3 = hour3.toString().split(" ")[1]
+
+            let hour4 = data1.list[3].dt_txt
+            let hourt4 = hour4.toString().split(" ")[1]
+
+            let hour5 = data1.list[4].dt_txt
+            let hourt5 = hour5.toString().split(" ")[1]
+
+            document.getElementById("hour1").innerHTML = hourt1
+            document.getElementById("hour2").innerHTML = hourt2
+            document.getElementById("hour3").innerHTML = hourt3
+            document.getElementById("hour4").innerHTML = hourt4
+            document.getElementById("hour5").innerHTML = hourt5
 
             search.value = ""
 
