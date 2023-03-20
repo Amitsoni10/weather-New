@@ -6,108 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-
     <script src="https://kit.fontawesome.com/5a608c6ca1.js" crossorigin="anonymous"></script>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .container {
-
-            /* border: 1px solid black; */
-            border-radius: 25px;
-            width: 350px;
-            height: 400px;
-            align-items: center;
-            text-align: center;
-            margin: 25px auto;
-            padding: 15px;
-            background: linear-gradient(rgb(179, 165, 235), rgb(133, 211, 250));
-
-        }
-        .container1{
-            border-radius: 25px;
-            width: 200px;
-            height: 150px;
-            align-items: center;
-            text-align: center;
-            margin: 10px auto;
-            padding: 15px;
-            background: linear-gradient(rgb(179, 165, 235), rgb(133, 211, 250));
-
-        }
-
-        #navbar {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-
-        nav {
-            background-color: rgba(0, 0, 255, 0.445);
-
-        }
-
-        nav>div {
-            margin: 10px 25px;
-        }
-
-        /* a {
-            text-decoration: none;
-        } */
-
-        .inv {
-            display: none;
-            visibility: hidden;
-        }
-
-        .vis {
-            /* display: ; */
-            visibility: visible;
-
-        }
-
-        #mag,
-        #logout,
-        #currentloc {
-            cursor: pointer;
-        }
-
-        #all,#all1{
-            display: flex;
-            /* justify-content: space-evenly; */
-        }
-
-
-
-
-
-    </style>
-
-
-
+    <link rel="stylesheet" href="post_login.css">
 </head>
 
 <body>
 
     <nav id="navbar">
-        <div id="logout">Logout</div>
-        <div><input id="search" type="text" placeholder="Search for location"></div>
-
-        <div class="star">
-            <i id="mag" class="fa-solid fa-magnifying-glass"></i>
+        <label class="heading"> <i class="fa-solid fa-sun"></i> Weather One </label>
+        <div id="navcontent">
+            <div class="search-box">
+                <div class="search-row">
+                    <input type="text" id="search" placeholder="Search for city or place... " autocomplete="off">
+                    <button id="mag"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <div class="suggestion-box">
+                </div>
+            </div>
+            <div class="navicon">
+                <div id="currentlocation">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <div class="tooltiptext">Know your Location</div>
+                </div>
+                <div id="logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <div class="tooltiptext">Sign out</div>
+                </div>
+            </div>
         </div>
-
-        <div>
-            <i id="currentloc" class="fa-solid fa-location-dot"></i>   
-        </div>
-
     </nav>
 
 
@@ -132,7 +58,6 @@
         <div class="container">
 
             <section id="weatherDetails1">
-
                 <div id="infoText1"></div>
                 <div id="day1"></div>
                 <div id="img1"></div>
@@ -166,12 +91,13 @@
 
 
 
-
+    <h2><span>Hourly Weather Data</span></h2>
     <div id="all1">
 
         <div class="container1">
+
             <div id="hour1"></div>
-            <div id="imgt1" ></div>
+            <div id="imgt1"></div>
             <div id="tempt1"></div>
             <div id="weatherconditiont1"></div>
 
@@ -208,51 +134,37 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <div id="all1">
-
-        <div class="container1">
+    <h2><span>5-day Weather Forcast</span></h2>
+    <div id="all2">
+        <div class="container2">
             <div id="day3"></div>
-            <div id="img3" >
-                <!-- <img id="img3" src="http://openweathermap.org/img/wn/10d@2x.png" alt=""> -->
-            </div>
+            <div id="img3"></div>
             <div id="temp3"></div>
             <div id="weathercondition3"></div>
 
         </div>
-        <div class="container1">
+        <div class="container2">
             <div id="day4"></div>
             <div id="img4"></div>
             <div id="temp4"></div>
             <div id="weathercondition4"></div>
 
         </div>
-        <div class="container1">
+        <div class="container2">
             <div id="day5"></div>
             <div id="img5"></div>
             <div id="temp5"></div>
             <div id="weathercondition5"></div>
 
         </div>
-        <div class="container1">
+        <div class="container2">
             <div id="day6"></div>
             <div id="img6"></div>
             <div id="temp6"></div>
             <div id="weathercondition6"></div>
 
         </div>
-        <div class="container1">
+        <div class="container2">
             <div id="day7"></div>
             <div id="img7"></div>
             <div id="temp7"></div>
@@ -263,8 +175,21 @@
     </div>
 
 
+    <footer id="footer">
+        <div class="footer-icon">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="footer-copyright">
+            <p>Copyright 2023 &#169 OneGroups .All rights Reserved</p>
+        </div>
+        
+    </footer>
 
     <script src="script2.js"></script>
+    <script src="autosuggestions.js"></script>
 
 </body>
 

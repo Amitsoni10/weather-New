@@ -1,5 +1,12 @@
 window.addEventListener("DOMContentLoaded", () => {
 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error)
+    }
+    else {
+        alert("Your System Does Not Support Geolocation API")
+    }
+
     let logout = document.getElementById("logout")
     logout.addEventListener("click", () => {
 
@@ -81,22 +88,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
     let api;
     let api1;
+    let all = document.getElementById("all")
 
 
 
 
-    // for search bar dynamics
-    let search = document.getElementById("search")
-    search.classList.add("inv")
-    let mag = document.getElementById("mag")
-    mag.addEventListener("click", () => {
-        search.classList.remove("inv")
-    })
 
-
-
-
-    let currentloc = document.getElementById("currentloc")
+    let currentloc = document.getElementById("currentlocation")
     currentloc.addEventListener("click", () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, error)
@@ -125,13 +123,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
-
+    //enter click
+    let suggest_click = document.querySelector(".suggestion-box")
     search.addEventListener("keyup", e => {
         if (e.key == "Enter" && search.value !== "") {
             requestApi(search.value)
+            suggest_click.innerHTML = " "
         }
-    })
+    });
+    //btn click 
+    let btn = document.getElementById("mag")
+    btn.addEventListener("click", () => {
+        // console.log("clicked")
+        if (search.value !== "") {
+            requestApi(search.value)
+            suggest_click.innerHTML = " "
+        }
+    });
 
 
     function requestApi(city) {
@@ -197,26 +205,63 @@ window.addEventListener("DOMContentLoaded", () => {
                 icon.innerHTML = `<i class="fa-solid fa-sun"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-sun"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+                all.classList.add("sun")
+                all.classList.remove("cloud-bolt")
+                all.classList.remove("snowflake")
+                all.classList.remove("smog")
+                all.classList.remove("cloud")
+                all.classList.remove("rain")
             } else if (data.weather[0].id >= 200 && data.weather[0].id <= 232) {
                 icon.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-cloud-bolt"></i>`;
+                all.classList.add("cloud-bolt")
+                all.classList.remove("sun")
+                all.classList.remove("snowflake")
+                all.classList.remove("smog")
+                all.classList.remove("cloud")
+                all.classList.remove("rain")
             } else if (data.weather[0].id >= 600 && data.weather[0].id <= 622) {
                 icon.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-snowflake"></i>`;
+                all.classList.add("snowflake")
+                all.classList.remove("cloud-bolt")
+                all.classList.remove("sun")
+                all.classList.remove("smog")
+                all.classList.remove("cloud")
+                all.classList.remove("rain")
             } else if (data.weather[0].id >= 701 && data.weather[0].id <= 781) {
                 icon.innerHTML = `<i class="fa-solid fa-smog"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-smog"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-smog"></i>`;
+                all.classList.add("smog")
+                all.classList.remove("cloud-bolt")
+                all.classList.remove("sun")
+                all.classList.remove("snowflake")
+                all.classList.remove("cloud")
+                all.classList.remove("rain")
+
             } else if (data.weather[0].id >= 801 && data.weather[0].id <= 804) {
                 icon.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-cloud"></i>`;
+                all.classList.add("cloud")
+                all.classList.remove("cloud-bolt")
+                all.classList.remove("sun")
+                all.classList.remove("snowflake")
+                all.classList.remove("smog")
+                all.classList.remove("rain")
             } else if ((data.weather[0].id >= 500 && data.weather[0].id <= 531) || (data.weather[0].id >= 300 && data.weather[0].id <= 321)) {
                 icon.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
                 icon1.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
                 icon2.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
+                all.classList.add("rain")
+                all.classList.remove("cloud-bolt")
+                all.classList.remove("sun")
+                all.classList.remove("snowflake")
+                all.classList.remove("smog")
+                all.classList.remove("cloud")
             }
 
             search.value = ""
@@ -341,19 +386,19 @@ window.addEventListener("DOMContentLoaded", () => {
                 icon7.innerHTML = `<i class="fa-solid fa-cloud-rain"></i>`;
             }
 
-            let time3 = new Date(data1.list[8].dt*1000)
+            let time3 = new Date(data1.list[8].dt * 1000)
             let day3 = time3.toDateString().split(" ")[0]
 
-            let time4 = new Date(data1.list[16].dt*1000)
+            let time4 = new Date(data1.list[16].dt * 1000)
             let day4 = time4.toDateString().split(" ")[0]
 
-            let time5 = new Date(data1.list[21].dt*1000)
+            let time5 = new Date(data1.list[21].dt * 1000)
             let day5 = time5.toDateString().split(" ")[0]
 
-            let time6 = new Date(data1.list[30].dt*1000)
+            let time6 = new Date(data1.list[30].dt * 1000)
             let day6 = time6.toDateString().split(" ")[0]
 
-            let time7 = new Date(data1.list[38].dt*1000)
+            let time7 = new Date(data1.list[38].dt * 1000)
             let day7 = time7.toDateString().split(" ")[0]
 
 
@@ -366,7 +411,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
             // hourly Data
-            
+
             tempt1.innerHTML = `${Math.floor(data1.list[0].main.temp)} &#8451`
             weatherconditiont1.innerHTML = data1.list[0].weather[0].description
 
@@ -483,10 +528,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
 })
-
-

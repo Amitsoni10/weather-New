@@ -5,71 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            background-color: rgba(255, 184, 90, 0.808);
-        }
-
-        .container {
-
-            border: 2px solid black;
-            border-radius: 25px;
-            width: 250px;
-            height: 250px;
-            align-items: center;
-            text-align: center;
-            margin: 100px auto;
-            padding: 15px;
-            background: linear-gradient(rgb(166, 148, 235), rgb(132, 187, 214));
-        }
-
-        #lbtn,
-        #signuphere,
-        #lbtnsignup {
-            background-color: rgb(91, 241, 241);
-            border: 2px solid black;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        #lbtn:hover {
-            background-color: rgb(186, 252, 252);
-            color: rgb(7, 50, 129);
-            border: 2px solid rgb(7, 50, 129);
-        }
-
-        input {
-            font-size: 15px;
-            border-radius: 15px;
-        }
-
-        #content {
-            color: red;
-        }
-
-        .inv {
-            display: none;
-            visibility: hidden;
-        }
-    </style>
+    <title>Login</title>
+    <script src="https://kit.fontawesome.com/5a608c6ca1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
+    <nav id="navbar">
+        <label class="heading"> <i class="fa-solid fa-sun"></i> Weather One </label>
+    </nav>
     
     <section id="loginpage">
 
         <div class="container">
-            <h2>Login</h2>
-            <label for="">User ID</label><br>
-            <input id="user" type="text"><br><br>
-            <label for="">Password</label><br>
-            <input id="password" type="password"><br><br>
-
-
-            <button id="lbtn">Login</button><br><br>
-            <button id="signuphere">New User Signup</button>
+            <h2>Sign in to Your Account</h2><hr>
+            <div class="input-row1">
+                <i class="fa-solid fa-user"></i>
+                <input id="user" type="text" placeholder="Enter User id">
+            </div>
+            <div class="input-row2">
+                <i class="fa-solid fa-lock"></i>
+                <input id="password" type="password" placeholder="Password">
+            </div><hr>
+            <button id="lbtn">Login</button>
+            </button>
+            <p id="signuphere">New User ? Signup</p>
             <p id="content"></p>
         </div>
 
@@ -77,14 +37,17 @@
 
     <section id="signuppage">
         <div class="container">
-            <h2>Signup</h2>
-            <label for="">User ID</label><br>
-            <input id="usersignup" type="text"><br><br>
-            <label for="">Password</label><br>
-            <input id="passwordsignup" type="password"><br><br>
-
-
+            <h2>Create New Account</h2><hr>
+            <div class="input-row1">
+                <i class="fa-solid fa-user"></i>
+                <input id="usersignup" type="text" placeholder="Enter User id">
+            </div>
+            <div class="input-row2">
+                <i class="fa-solid fa-lock"></i>
+                <input id="passwordsignup" type="password" placeholder="Password">
+            </div><hr>
             <button id="lbtnsignup">Signup</button>
+            <p id="backtologin">Back to login</p>
             <p id="contents"></p>
 
         </div>
