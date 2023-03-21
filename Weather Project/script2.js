@@ -1,6 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
     console.log("Weather App By Amit and Jaidev")
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error)
     }
@@ -537,4 +536,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-})
+});
